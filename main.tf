@@ -4,7 +4,7 @@ region = "ap-south-1"
 
 resource "aws_key_pair" "t_key" {
     key_name   = "first-key-pair"
-    public_key = file("~/.ssh/id_rsa.pub") # Change to your desired key pair name
+    public_key = file("aws_terraform_key") 
     }
 
 resource "aws_vpc" "t_vpc" {
