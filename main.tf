@@ -77,7 +77,7 @@ resource "aws_instance" "t_ec2" {
   count = 3
   ami           = "ami-053b12d3152c0cc71" 
     instance_type = "t2.micro"  
-    key_name      = "first-key-pair"
+    key_name = aws_key_pair.t_key.key_name
     subnet_id     = aws_subnet.t_subnet.id 
     vpc_security_group_ids = [aws_security_group.t_sg.id]
     tags = {
