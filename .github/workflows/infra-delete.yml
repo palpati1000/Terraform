@@ -1,4 +1,4 @@
-name: infra setup
+name: infra delete
 
 # Controls when the workflow will run
 on: workflow_dispatch
