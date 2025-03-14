@@ -39,7 +39,10 @@ jobs:
         run: terraform plan
         
       - name: Apply Terraform
-        run: terraform apply
+        run: terraform apply --auto-approve
+
+      - name: Apply Terraform
+        run: ls -ltr
         
       - name: add and commit
         run: git add terraform.tfstate && git commit -m "Update terraform state file" && git push origin main
