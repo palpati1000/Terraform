@@ -9,12 +9,10 @@ on: workflow_dispatch
 jobs:
 
   terraform-init:
-  
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.CLOUD_REGION }}
-      
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -43,17 +41,14 @@ jobs:
         run: ls -ltr && docker --version && pwd && cat /etc/os-release
 
   terraform-plan-apply:
-  
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
-      AWS_REGION: ${{ secrets.CLOUD_REGION }}
-      
+      AWS_REGION: ${{ secrets.CLOUD_REGION }} 
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Validate Terraform
         run: terraform plan
-
       - name: Validate Terraform
         run: terraform plan
