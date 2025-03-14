@@ -40,8 +40,9 @@ jobs:
         
       - name: Apply Terraform
         run: terraform apply --auto-approve
+        continue-on-error: true
 
-      - name: Apply Terraform
+      - name: check file
         run: ls -ltr
         
       - name: add and commit
