@@ -23,6 +23,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ssh-private-key
+          path: aws_terraform_key
           
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
