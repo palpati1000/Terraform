@@ -4,7 +4,7 @@ region = "ap-south-1"
 
 resource "aws_key_pair" "t_key" {
     key_name   = "first-key-pair"
-    public_key = "${file("${path.module}/id_rsa.pub")}"
+    public_key = file(t_rsa.pub)
     }
 
 resource "aws_vpc" "t_vpc" {
