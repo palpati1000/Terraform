@@ -40,10 +40,13 @@ jobs:
         
       - name: Apply Terraform
         run: terraform apply --auto-approve
-        continue-on-error: true
 
-      - name: check file
-        run: ls -ltr
         
-      - name: add and commit
-        run: git add terraform.tfstate && git commit -m "Update terraform state file" && git push origin main
+      - name: Post Failure Action
+        if: failure()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "palpati1000"
+          git add terraform.tfstate
+          git commit -m "pushing back terrform state file"
+          git push origin main
