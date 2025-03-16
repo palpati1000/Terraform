@@ -18,8 +18,9 @@ jobs:
     steps:
 
       - uses: actions/checkout@v4
+      
       - name: Generate ssh keys
-        run: ssh-keygen -f "aws_terraform_key"
+        run: ssh-keygen -t rsa -b 4096 -N "" -f "aws_terraform_key"
 
       - name: Archive the private key
         uses: actions/upload-artifact@v4
@@ -49,4 +50,4 @@ jobs:
           git config --local user.name "palpati1000"
           git add terraform.tfstate
           git commit -m "pushing back terrform state file"
-          git push origin main ssh://github.com/palpati1000/Terraform.git
+          git push origin main git@github.com:palpati1000/Terraform.git
