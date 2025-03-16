@@ -39,12 +39,13 @@ jobs:
       - name: Plan Terraform
         run: terraform plan
         
-      - name: Apply Terraform
+      - name: Apply 
+        id: apply
         run: terraform apply --auto-approve
 
         
       - name: Post Failure Action
-        if: failure()
+        if: steps.apply.outcome == 'failure'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "palpati1000"
