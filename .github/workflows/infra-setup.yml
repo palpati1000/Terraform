@@ -22,14 +22,3 @@ jobs:
       - name: Generate ssh keys
         run: ssh-keygen -t rsa -b 4096 -N "" -f "aws_terraform_key"
 
-
-        
-      - name: Post Failure Action
-        
-        run: |
-          git config --local user.name "palpati1000"
-          git config --local user.email "pravinalpati1000@gmail.com"
-          git add aws_terraform_key
-          git commit -m "pushing back terrform state file"
-          git push origin
-          
