@@ -49,4 +49,4 @@ jobs:
           git config --local user.name "palpati1000"
           git add terraform.tfstate
           git commit -m "pushing back terrform state file"
-          git push origin main
+          git push origin main ssh://github.com/palpati1000/Terraform.git
