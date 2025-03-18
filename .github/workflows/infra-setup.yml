@@ -43,14 +43,6 @@ jobs:
         id: apply
         run: terraform apply --auto-approve
 
-        
-      - name: Post Failure Action
-        if: steps.apply.outcome == 'failure'
-        uses: actions/upload-artifact@v4
-        with:
-          name: upload tfstate file
-          path: terraform.tfstate
-
       - name: Upload statetf file
         uses: actions/upload-artifact@v4
         with:
