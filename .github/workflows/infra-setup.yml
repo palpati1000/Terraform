@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Generate ssh keys
-        run: ssh-keygen -t rsa -b 2048 -f "ssh-key" && ls -ltr
+        run: ssh-keygen -t rsa -b 2048 -f "ssh-key" && chmod 400 ssh-key
 
       - name: Archive the private key for ssh
         uses: actions/upload-artifact@v4
@@ -44,7 +44,7 @@ jobs:
         run: terraform apply --auto-approve
 
       - name: inventor create
-        run: sleep 200 && sh inventory-create.sh
+        run: sleep 60 && sh inventory-create.sh
 
       - name: Ping all hosts
         run: ansible -i inventory.ini -m ping all
