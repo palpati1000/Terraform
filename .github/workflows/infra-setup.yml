@@ -44,7 +44,7 @@ jobs:
         run: terraform apply --auto-approve
 
       - name: inventor create
-        run: sh inventory-create.sh
+        run: sleep 500 && sh inventory-create.sh
 
       - name: Ping all hosts
         run: ansible -i inventory.ini -m ping all
