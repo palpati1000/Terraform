@@ -88,7 +88,19 @@ resource "aws_security_group" "t_sg" {
       }
     }
 
-resource "aws_instance" "t_ec2" {
+
+resource "aws_instance" "master" {
+  ami           = "ami-053b12d3152c0cc71" 
+    instance_type = "t2.micro"  
+    key_name = aws_key_pair.t_key.key_name
+    subnet_id     = aws_subnet.t_subnet.id 
+    vpc_security_group_ids = [aws_security_group.t_sg.id]
+    tags = {
+           Name = "MasterInstance"
+          }
+  }
+
+resource "aws_instance" "slaves" {
   count = 3
   ami           = "ami-053b12d3152c0cc71" 
     instance_type = "t2.micro"  
@@ -96,9 +108,13 @@ resource "aws_instance" "t_ec2" {
     subnet_id     = aws_subnet.t_subnet.id 
     vpc_security_group_ids = [aws_security_group.t_sg.id]
     tags = {
-           Name = "FirstEC2Instancei-${count.index + 1}"
+           Name = "SlaveInstance-${count.index + 1}"
           }
   }
-output "t_ec2_ips" {
-    value = aws_instance.t_ec2[*].public_ip
+
+output "master_ip" {
+    value = aws_instance.master.public_ip
+  }
+output "slaves_ips" {
+    value = aws_instance.slaves[*].public_ip
   }
