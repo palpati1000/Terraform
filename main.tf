@@ -99,6 +99,6 @@ resource "aws_instance" "t_ec2" {
            Name = "FirstEC2Instancei-${count.index + 1}"
           }
   }
-output "instance_public_ips" {
+output "t_ec2_ips" {
     value = aws_instance.t_ec2[*].public_ip
   }
