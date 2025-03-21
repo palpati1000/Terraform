@@ -16,16 +16,19 @@ jobs:
     steps:
 
       - uses: actions/checkout@v4
+
+      - name: Generate ssh keys
+        run: ssh-keygen -t rsa -b 2048 -f "ssh-key"
       
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.10.2"
           
-      - name: Init Terraform
+      - name: Terraform init
         run: terraform init
 
-      - name: Validate Terraform
+      - name: Terraform Validate 
         run: terraform validate
 
       - name: Delete Terraform
