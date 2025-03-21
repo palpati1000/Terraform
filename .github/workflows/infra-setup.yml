@@ -44,8 +44,7 @@ jobs:
         run: terraform apply --auto-approve
 
       - name: Apply Terraform
-        run: slave_ips=$(terraform output -json t_ec2_ips | jq -r '.[]') && echo $slave_ips
-      
+        run: sh inventory-create.sh
 
       - name: Upload tfstate file
         uses: actions/upload-artifact@v4
