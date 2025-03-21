@@ -25,5 +25,8 @@ jobs:
       - name: Init Terraform
         run: terraform init
 
+      - name: Validate Terraform
+        run: terraform validate
+
       - name: Delete Terraform
         run: terraform destroy
