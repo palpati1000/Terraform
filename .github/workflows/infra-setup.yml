@@ -20,15 +20,15 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Generate ssh keys
-        run: ssh-keygen -t rsa -b 2048 -f "aws_terraform_key"
+        run: ssh-keygen -t rsa -b 2048 -f "ssh-key"
 
-      - name: Archive the private key
+      - name: Archive the private key for ssh
         uses: actions/upload-artifact@v4
         with:
           name: ssh-private-key
           path: aws_terraform_key
           
-      - name: Install Terraform
+      - name: Terraform Installation
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.10.2"
@@ -39,11 +39,11 @@ jobs:
       - name: Plan Terraform
         run: terraform plan
         
-      - name: Apply 
+      - name: Apply Terraform
         id: apply
         run: terraform apply --auto-approve
 
-      - name: Upload statetf file
+      - name: Upload tfstate file
         uses: actions/upload-artifact@v4
         with:
           name: upload tfstate file
