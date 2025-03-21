@@ -44,7 +44,7 @@ jobs:
         run: terraform apply --auto-approve
 
       - name: Apply Terraform
-        run: slave_ips=$(terraform output -json t_ec2_ips | jq -r '.[]')
+        run: slave_ips=$(terraform output -json t_ec2_ips | jq -r '.[]') && echo $slave_ips
       
 
       - name: Upload tfstate file
