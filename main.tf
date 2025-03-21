@@ -91,7 +91,7 @@ resource "aws_security_group" "t_sg" {
 
 resource "aws_instance" "master" {
   ami           = "ami-053b12d3152c0cc71" 
-    instance_type = "t2.micro"  
+    instance_type = "t2.medium"  
     key_name = aws_key_pair.t_key.key_name
     subnet_id     = aws_subnet.t_subnet.id 
     vpc_security_group_ids = [aws_security_group.t_sg.id]
@@ -101,9 +101,9 @@ resource "aws_instance" "master" {
   }
 
 resource "aws_instance" "slaves" {
-  count = 3
+  count = 2
   ami           = "ami-053b12d3152c0cc71" 
-    instance_type = "t2.micro"  
+    instance_type = "t2.medium"  
     key_name = aws_key_pair.t_key.key_name
     subnet_id     = aws_subnet.t_subnet.id 
     vpc_security_group_ids = [aws_security_group.t_sg.id]
