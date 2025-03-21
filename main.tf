@@ -1,4 +1,10 @@
 terraform {
+    required_providers {
+        aws = {
+            source = "hashicorp/aws"
+            version = "~> 4.0"
+        }
+    }
     backend "s3" {
         bucket = "palpati1000" 
         key    = "terraform.tfstate"
@@ -13,7 +19,7 @@ region = "ap-south-1"
 
 resource "aws_key_pair" "t_key" {
     key_name   = "first-key-pair"
-    public_key = file("aws_terraform_key")
+    public_key = file("ssh-key.pub")
     }
 
 resource "aws_vpc" "t_vpc" {
