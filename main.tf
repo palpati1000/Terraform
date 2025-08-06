@@ -1,3 +1,4 @@
+https://teams.microsoft.com/l/meetup-join/19%3ameeting_NmIwZGYwMjktNTJlYS00YTJiLWIxZTMtYWRkZWM2MGU5OThk%40thread.v2/0?context=%7b%22Tid%22%3a%223e9aadf8-6a16-490f-8dcd-c68860caae0b%22%2c%22Oid%22%3a%22ad58d902-8b45-4b6a-a95e-f7531d46e383%22%7d
 terraform {
     required_providers {
         aws = {
